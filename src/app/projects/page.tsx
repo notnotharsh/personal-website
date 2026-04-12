@@ -8,6 +8,7 @@ const projects = [
     description:
       "A C++ tool for processing market data from PCAP files from the IEX exchange. Built for aspiring quantitative developers and researchers, it handles millions of trades per day with a focus on low-latency processing of TOPS and DEEP files.",
     tech: ["C++", "Apache Arrow"],
+    period: "Jan 2026 – Present",
     github: "https://github.com/notnotharsh/easyiex",
   },
   {
@@ -15,6 +16,7 @@ const projects = [
     description:
       "Implementations of spectral element methods for solving Poisson and Laplace PDEs on regular and deformed domains. Features mesh deformation via Laplace equation solutions and modified differentiation matrices for deformed geometries.",
     tech: ["MATLAB", "Python", "NumPy", "SciPy"],
+    period: "May 2023 – Jul 2023",
     github: "https://github.com/notnotharsh/sem",
   },
   {
@@ -22,6 +24,7 @@ const projects = [
     description:
       "A web app that analyzes your Spotify listening habits and recommends tracks from adjacent genres. It identifies your primary genres, finds related ones, and suggests songs with matching audio features like danceability and valence.",
     tech: ["JavaScript", "Node.js", "Spotify API"],
+    period: "Dec 2022 – Jan 2023",
     github: "https://github.com/notnotharsh/adjacent-music",
     live: "https://adjacent-music.onrender.com",
   },
@@ -41,9 +44,12 @@ export default function Projects() {
             className={`card p-5 flex flex-col opacity-0 animate-fade-in stagger-${i + 1}`}
           >
             <div className="flex items-start justify-between mb-2">
-              <h2 className="text-sm font-bold">
-                {project.title}
-              </h2>
+              <div>
+                <h2 className="text-sm font-bold">
+                  {project.title}
+                </h2>
+                <span className="text-xs opacity-40">{project.period}</span>
+              </div>
               <div className="flex items-center gap-2 ml-2 shrink-0">
                 <a
                   href={project.github}
