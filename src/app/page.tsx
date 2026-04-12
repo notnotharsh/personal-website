@@ -47,7 +47,7 @@ const experiences = [
   {
     role: "Software Engineer Intern",
     company: "Synchrony",
-    period: "Jan 2022 – May 2024",
+    period: "Jan 2022 – May 2023",
     description:
       "Low-level research and prototyping of security vulnerabilities, DevOps automation for detection and response",
     skills: ["Kali Linux", "MITRE ATT&CK", "Splunk", "Python"],
@@ -106,11 +106,11 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="card p-6 opacity-0 animate-fade-in stagger-2">
-        <h2 className="text-sm font-bold uppercase tracking-wider mb-4">
+      <section className="opacity-0 animate-fade-in stagger-2">
+        <h2 className="text-sm font-bold uppercase tracking-wider mb-6">
           About
         </h2>
-        <div className="space-y-3 text-sm opacity-70 leading-relaxed">
+        <div className="card p-6 space-y-3 text-sm opacity-70 leading-relaxed">
           <p>
             Hi! I&apos;m Harsh, an engineer at Annapurna Labs in
             Seattle, working on ML infrastructure and cluster observability for
