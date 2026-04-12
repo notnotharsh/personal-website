@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+.dark body,
+body:is(.dark *) {
+  background: #000000;
+}
+
+/* Flat card — no shadows, no radius */
+.card {
+  background: #ffffff;
+  border: 1.5px solid #000000;
+  transition: border-color 0.15s ease;
+}
+
+.dark .card {
+  background: #000000;
+  border-color: #ffffff;
+}
+
+.card:hover {
+  border-color: #666666;
+}
+
+.dark .card:hover {
+  border-color: #999999;
+}
+
+/* Pill tag */
+.tag {
+  border: 1px solid #000000;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.dark .tag {
+  border-color: #ffffff;
+}
+
+/* Staggered animation delays */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+
+/* Selection */
+::selection {
+  background: #000000;
+  color: #ffffff;
+}
+
+.dark ::selection {
+  background: #ffffff;
+  color: #000000;
+}
