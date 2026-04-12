@@ -57,7 +57,17 @@ body:is(.dark *) {
   color: #ffffff;
 }
 
-.dark ::selection {
+::-moz-selection {
+  background: #000000;
+  color: #ffffff;
+}
+
+html.dark ::selection {
+  background: #ffffff;
+  color: #000000;
+}
+
+html.dark ::-moz-selection {
   background: #ffffff;
   color: #000000;
 }
