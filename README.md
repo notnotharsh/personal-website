@@ -1,6 +1,6 @@
 ## Personal Website
 
-Personal website for Harsh Tiwary hosted at https://notnotharsh.vercel.app
+Personal website for Harsh Tiwary hosted at https://notnotharsh.dev
 
 ## Credits
 
