@@ -16,9 +16,11 @@
     "next-themes": "^0.3.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
+    "rehype-katex": "^7.0.1",
     "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
+    "remark-math": "^6.0.0",
     "remark-rehype": "^11.1.2",
     "shiki": "^4.2.0"
   },

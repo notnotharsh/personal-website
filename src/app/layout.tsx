@@ -3,6 +3,7 @@ import { Inconsolata } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 
 const inconsolata = Inconsolata({
   subsets: ["latin"],

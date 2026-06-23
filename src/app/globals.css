@@ -99,6 +99,14 @@ body:is(.dark *) {
   padding-left: 1.25rem;
 }
 
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
 .prose li {
   margin-bottom: 0.25rem;
 }

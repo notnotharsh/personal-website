@@ -2,7 +2,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
+import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
+import rehypeKatex from "rehype-katex";
 import rehypeShiki from "@shikijs/rehype";
 import rehypeStringify from "rehype-stringify";
 
@@ -44,7 +46,9 @@ export async function getPost(slug: string): Promise<Post | null> {
   const raw = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(raw);
   const processed = await remark()
+    .use(remarkMath)
     .use(remarkRehype)
+    .use(rehypeKatex)
     .use(rehypeShiki, {
       themes: { light: "github-light", dark: "github-dark" },
     })

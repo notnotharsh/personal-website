@@ -11,7 +11,7 @@ export default function Blog() {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-3xl md:text-4xl font-heading font-bold tracking-tight text-center mb-12 opacity-0 animate-fade-in">
+      <h1 className="text-3xl md:text-4xl font-heading font-bold tracking-tight uppercase text-center mb-12 opacity-0 animate-fade-in">
         Blog
       </h1>
 
