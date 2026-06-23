@@ -51,6 +51,113 @@ body:is(.dark *) {
 .stagger-5 { animation-delay: 0.25s; }
 .stagger-6 { animation-delay: 0.3s; }
 
+/* Blog prose */
+.prose {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  opacity: 0.8;
+}
+
+.prose h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  opacity: 1;
+}
+
+.prose h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  opacity: 1;
+}
+
+.prose h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  opacity: 1;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+}
+
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+}
+
+.prose li {
+  margin-bottom: 0.25rem;
+}
+
+.prose code {
+  font-size: 0.8rem;
+  border: 1px solid #000000;
+  padding: 0.1rem 0.3rem;
+}
+
+.dark .prose code {
+  border-color: #ffffff;
+}
+
+.prose pre {
+  border: 1.5px solid #000000;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.dark .prose pre {
+  border-color: #ffffff;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+.dark .prose pre span {
+  color: var(--shiki-dark) !important;
+}
+
+.prose pre code {
+  border: none;
+  padding: 0;
+}
+
+.prose blockquote {
+  border-left: 2px solid #000000;
+  padding-left: 1rem;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+.dark .prose blockquote {
+  border-left-color: #ffffff;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1.5px solid #000000;
+  margin: 2rem 0;
+  opacity: 0.2;
+}
+
+.dark .prose hr {
+  border-top-color: #ffffff;
+}
+
 /* Selection */
 ::selection {
   background: #000000;
