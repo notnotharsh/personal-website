@@ -2,6 +2,7 @@
 title: "building a cpu inference engine from first principles"
 date: 2026-08-07
 description: aka making LLaMa 8B go as fast as possible on an AMD Zen 3
+draft: true
 ---
 
 ## Part 0: What is This?
@@ -39,24 +40,28 @@ class Tensor {
 }
 ```
 
-We can then extend this tensor to support reshape operations. Assuming a tensor is contiguous, a reshape operation creates a new tensor with the same bytes but a different shape and set of strides. Consider a `Tensor` around a 3x4 matrix:
-```matvis
-type: strides
-dtype: int8
-shape: [3, 4]
-strides: [4, 1]
-byte_offsets: true
-```
+We can then extend this tensor to support reshape operations. Assuming a tensor is contiguous, a reshape operation creates a new tensor with the same bytes but a different shape and set of strides. Consider a `Tensor` around a 3x4 matrix, where each cell shows the element's byte offset (the dtype is `int8`, so offsets are in bytes):
 
-A reshape operation can create another `Tensor` around the same data (so no copies) but since the shape and stride metadata are different, it's now a 2x6 matrix!
+$$
+\underbrace{
+\begin{bmatrix}
+0 & 1 & 2 & 3 \\
+4 & 5 & 6 & 7 \\
+8 & 9 & 10 & 11
+\end{bmatrix}
+}_{\text{shape } [3,4],\ \text{strides } [4,1]}
+$$
 
-```matvis
-type: strides
-dtype: int8
-shape: [2, 6]
-strides: [6, 1]
-byte_offsets: true
-```
+A reshape operation can create another `Tensor` around the same data (so no copies) but since the shape and stride metadata are different, it's now a 2x6 matrix over the same 12 bytes:
+
+$$
+\underbrace{
+\begin{bmatrix}
+0 & 1 & 2 & 3 & 4 & 5 \\
+6 & 7 & 8 & 9 & 10 & 11
+\end{bmatrix}
+}_{\text{shape } [2,6],\ \text{strides } [6,1]}
+$$
 
 We can do this just by changing metadata:
 ```cpp
@@ -78,24 +83,27 @@ Tensor Tensor::reshape(std::vector<size_t> new_shape) const {
 }
 ```
 
-We can also support slice operations: just erase the element in the shape and strides array. The data inside the `shared_ptr` remains unchanged. For example, consider a `Tensor` around a 3x4 matrix:
+We can also support slice operations: just erase the element in the shape and strides array. The data inside the `shared_ptr` remains unchanged. For example, consider a `Tensor` around a 3x4 matrix (cells show byte offsets):
 
-```matvis
-type: strides
-dtype: int8
-shape: [3, 4]
-strides: [4, 1]
-byte_offsets: true
-```
+$$
+\underbrace{
+\begin{bmatrix}
+0 & 1 & 2 & 3 \\
+4 & 5 & 6 & 7 \\
+8 & 9 & 10 & 11
+\end{bmatrix}
+}_{\text{shape } [3,4],\ \text{strides } [4,1]}
+$$
 
-Slice it to get the first column as a 1D vector of size 3:
-```matvis
-type: strides
-dtype: int8
-shape: [3]
-strides: [4]
-byte_offsets: true
-```
+Slice it to get the first column as a 1D vector of size 3 — the elements are byte offsets 0, 4, and 8 (stride 4, no longer contiguous):
+
+$$
+\underbrace{
+\begin{bmatrix}
+0 & 4 & 8
+\end{bmatrix}
+}_{\text{shape } [3],\ \text{strides } [4]}
+$$
 
 We can do this by deleting the corresponding element in the shape and strides array:
 
