@@ -32,8 +32,11 @@ const projects = [
 
 export default function Projects() {
   return (
-    <div className="max-w-3xl mx-auto">
-      <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-12 uppercase opacity-0 animate-fade-in">
+    <div className="pb-8">
+      <h1
+        className="font-heading text-2xl md:text-3xl font-bold tracking-tight mb-6 animate-fade-up"
+        style={{ opacity: 0, animationFillMode: "forwards" }}
+      >
         Projects
       </h1>
 
@@ -41,40 +44,50 @@ export default function Projects() {
         {projects.map((project, i) => (
           <div
             key={project.title}
-            className={`card p-5 flex flex-col opacity-0 animate-fade-in stagger-${i + 1}`}
+            className="glass-card glass-hover p-5 flex flex-col animate-fade-up"
+            style={{
+              opacity: 0,
+              animationDelay: `${0.08 + i * 0.08}s`,
+              animationFillMode: "forwards",
+            }}
           >
             <div className="flex items-start justify-between mb-2">
               <div>
-                <h2 className="text-sm font-bold">
-                  {project.title}
-                </h2>
-                <span className="text-xs opacity-40">{project.period}</span>
+                <h2 className="text-sm font-semibold">{project.title}</h2>
+                <span className="text-xs" style={{ color: "var(--muted)" }}>
+                  {project.period}
+                </span>
               </div>
               <div className="flex items-center gap-2 ml-2 shrink-0">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="opacity-40 hover:opacity-100 transition-opacity"
                   aria-label={`${project.title} on GitHub`}
+                  style={{ color: "var(--muted)" }}
+                  className="transition-colors duration-200 hover:text-[var(--accent)]"
                 >
-                  <Github size={14} />
+                  <Github size={16} />
                 </a>
                 {project.live && (
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="opacity-40 hover:opacity-100 transition-opacity"
                     aria-label={`${project.title} live demo`}
+                    style={{ color: "var(--muted)" }}
+                    className="transition-colors duration-200 hover:text-[var(--accent)]"
                   >
-                    <ExternalLink size={14} />
+                    <ExternalLink size={16} />
                   </a>
                 )}
               </div>
             </div>
 
-            <p className="text-xs opacity-60 leading-relaxed mb-4 flex-1">
+            <p
+              className="text-xs leading-relaxed mb-4 flex-1"
+              style={{ color: "var(--muted)" }}
+            >
               {project.description}
             </p>
 

@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
-import { Inconsolata } from "next/font/google";
+import { Raleway, Noto_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Navbar from "@/components/Navbar";
+import ThemeToggle from "@/components/ThemeToggle";
+import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 
-const inconsolata = Inconsolata({
+const raleway = Raleway({
   subsets: ["latin"],
-  variable: "--font-inconsolata",
+  weight: ["700"],
+  variable: "--font-raleway",
+  display: "swap",
+});
+
+const notoSans = Noto_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto",
   display: "swap",
 });
 
@@ -24,11 +33,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inconsolata.variable} font-mono antialiased bg-white dark:bg-black text-black dark:text-white`}
+        className={`${raleway.variable} ${notoSans.variable} font-sans antialiased`}
       >
         <ThemeProvider>
-          <Navbar />
-          <main className="pt-24 pb-20 px-6">{children}</main>
+          <ThemeToggle />
+          <main className="max-w-[56rem] mx-auto mt-28 md:mt-32 px-6 pb-16">
+            {children}
+          </main>
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
